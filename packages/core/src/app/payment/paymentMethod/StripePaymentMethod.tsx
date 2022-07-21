@@ -1,9 +1,12 @@
+import { noop } from 'lodash';
 import { CardInstrument, PaymentInitializeOptions, StripeElementOptions } from '@bigcommerce/checkout-sdk';
 import React, { useCallback, FunctionComponent } from 'react';
 
 import { withCheckout, CheckoutContextProps } from '../../checkout';
-import { TranslatedString } from '../../locale';
+import { TranslatedString, WithLanguageProps, withLanguage } from '../../locale';
 import { withHostedCreditCardFieldset, WithInjectedHostedCreditCardFieldsetProps } from '../hostedCreditCard';
+
+import { CustomError } from '../../common/error';
 
 import HostedWidgetPaymentMethod, { HostedWidgetPaymentMethodProps } from './HostedWidgetPaymentMethod';
 import StripeV3CustomCardForm from './StripeV3CustomCardForm';
@@ -31,13 +34,15 @@ export enum StripeElementType {
     iban = 'iban',
     idealBank = 'idealBank',
 }
-const StripePaymentMethod: FunctionComponent<StripePaymentMethodProps & WithInjectedHostedCreditCardFieldsetProps & WithCheckoutStripePaymentMethodProps> = ({
+const StripePaymentMethod: FunctionComponent<StripePaymentMethodProps & WithLanguageProps & WithInjectedHostedCreditCardFieldsetProps & WithCheckoutStripePaymentMethodProps> = ({
     initializePayment,
     getHostedFormOptions,
     getHostedStoredCardValidationFieldset,
     hostedStoredCardValidationSchema,
     method,
     storeUrl,
+    onUnhandledError = noop,
+    language,
     ...rest
     }) => {
     const { useIndividualCardFields } = method.initializationData;
@@ -70,6 +75,19 @@ const StripePaymentMethod: FunctionComponent<StripePaymentMethodProps & WithInje
         [StripeElementType.idealBank]: {
             classes,
         },
+    };
+
+    const onError = (error: CustomError) => {
+        if (error.name === 'stripeV3AuthFail3dsError') {
+            error = new CustomError({
+                title: language.translate('payment.stripev3_auth_3ds_fail'),
+                message: language.translate(error.type),
+                data: {},
+                name: 'striveV3AuthFail3dsError',
+            });
+        }
+
+        onUnhandledError?.(error);
     };
 
     const getIndividualCardElementOptions = useCallback((stripeInitializeOptions: StripeOptions) => {
@@ -124,6 +142,7 @@ const StripePaymentMethod: FunctionComponent<StripePaymentMethodProps & WithInje
             hideContentWhenSignedOut
             initializePayment={ initializeStripePayment }
             method={ method }
+            onUnhandledError={ onError }
             renderCustomPaymentForm={ renderCustomPaymentForm }
             shouldRenderCustomInstrument={ useIndividualCardFields }
             storedCardValidationSchema={ hostedStoredCardValidationSchema }
@@ -152,4 +171,4 @@ function mapFromCheckoutProps(
     };
 }
 
-export default withHostedCreditCardFieldset(withCheckout(mapFromCheckoutProps)(StripePaymentMethod));
+export default withLanguage(withHostedCreditCardFieldset(withCheckout(mapFromCheckoutProps)(StripePaymentMethod)));
