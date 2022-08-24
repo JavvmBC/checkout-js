@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.245.3-prerelease.1661370839497](https://github.com/bigcommerce/checkout-js/compare/v1.233.0...v1.245.3-prerelease.1661370839497) (2022-08-24)
+
+
+### Features
+
+* **checkout:** CHECKOUT-0000 Update e2e tests local env entry point ([#933](https://github.com/bigcommerce/checkout-js/issues/933)) ([bae4748](https://github.com/bigcommerce/checkout-js/commit/bae4748f71db9bbf6843a28da20780bcdf85675e))
+* **checkout:** CHECKOUT-6269 Create payment-integration package ([#920](https://github.com/bigcommerce/checkout-js/issues/920)) ([afcd87b](https://github.com/bigcommerce/checkout-js/commit/afcd87bdb9e7bb95b44cfb42ad0b3293e322ce64))
+* **checkout:** CHECKOUT-6426 Refactor ApplePay as Monorepo Package ([#950](https://github.com/bigcommerce/checkout-js/issues/950)) ([5ed13a8](https://github.com/bigcommerce/checkout-js/commit/5ed13a86674a4c9c3d590845f9269b823e5fb8ed))
+* **checkout:** CHECKOUT-6655 Make Screen reader say each error ([026373b](https://github.com/bigcommerce/checkout-js/commit/026373b223125663b291a5bab66c088c0711f2e7))
+* **checkout:** CHECKOUT-6781 Add component for loading checkout buttons from integration packages ([482b425](https://github.com/bigcommerce/checkout-js/commit/482b42524e57cda9d3da176e560ace5f10a249ca))
+* **checkout:** CHECKOUT-6781 Add embedded checkout override for Google Pay button ([88c22c8](https://github.com/bigcommerce/checkout-js/commit/88c22c8598b0393e467c375b316e854747a34351))
+* **checkout:** CHECKOUT-6781 Resolve default component ([5ae9a52](https://github.com/bigcommerce/checkout-js/commit/5ae9a5233b672f66b199735f3d473bef58c7ca15))
+* **checkout:** CHECKOUT-6817 Update Sentry version and config ([#966](https://github.com/bigcommerce/checkout-js/issues/966)) ([f82e90d](https://github.com/bigcommerce/checkout-js/commit/f82e90d8606322765056f8cbf63e80da66a74cb9))
+* **checkout:** CHECKOUT-6896 Add STOREURL as env variable ([#968](https://github.com/bigcommerce/checkout-js/issues/968)) ([7623113](https://github.com/bigcommerce/checkout-js/commit/7623113c1c8e6f0602c35a1104e9f7ffe5b945df))
+* **payment:** ADYEN-539 added vaulting card validation ([2aca6c7](https://github.com/bigcommerce/checkout-js/commit/2aca6c77f8496da1513e2bf3efd111b80f014480))
+* **payment:** CHECKOUT-0000 Optimize Payment Integration JS API ([#956](https://github.com/bigcommerce/checkout-js/issues/956)) ([7bfb5e1](https://github.com/bigcommerce/checkout-js/commit/7bfb5e1d9f7bcde450fbcf5a92ced60d7340b50d))
+* **payment:** INT-6115 Worldpay - remove unnecessary iframe ([53a6ba0](https://github.com/bigcommerce/checkout-js/commit/53a6ba059100de38c54306c283c108e8ae15ab5c))
+* **payment:** PAYPAL-1445 fixed storeCredit checkbox ([d471bcb](https://github.com/bigcommerce/checkout-js/commit/d471bcb1e7d80c180902d4db3498f4aab099b5f9))
+* **payment:** STRIPE-82 Add array in back, to receive it and use it in front ([b2cfa47](https://github.com/bigcommerce/checkout-js/commit/b2cfa47d7977dd7169865f787bae65f69af6f359))
+* **payment:** STRIPE-82 Add code to show images on the list ([dcc0ba7](https://github.com/bigcommerce/checkout-js/commit/dcc0ba76820e4501dbbbe0506bf5102d49c69aeb))
+
+
+### Bug Fixes
+
+* **checkout:** ADYEN-0000 fixed payment provider title css ([cd897a0](https://github.com/bigcommerce/checkout-js/commit/cd897a05a9c1f1409e92674a2d51da769e806fa5))
+* **checkout:** CHECKOUT-0000 fix ApplePay unit test ([#957](https://github.com/bigcommerce/checkout-js/issues/957)) ([1068e52](https://github.com/bigcommerce/checkout-js/commit/1068e525c51a6588af4e40d58f63279974b47915))
+* **checkout:** CHECKOUT-0000 Update e2e tests for buy-now cart project ([#927](https://github.com/bigcommerce/checkout-js/issues/927)) ([dfd1dc0](https://github.com/bigcommerce/checkout-js/commit/dfd1dc0e1c4e693d99b3864a6ba0043456793c41))
+* **payment:** CHECKOUT-5889 Fix issue with element detach modal ([#967](https://github.com/bigcommerce/checkout-js/issues/967)) ([d6c2f9e](https://github.com/bigcommerce/checkout-js/commit/d6c2f9e5966db5bca5d9e06f9b4767e3cb09b709))
+* **payment:** STRIPE-53 Change error message of 3ds Auth Fail ([417d290](https://github.com/bigcommerce/checkout-js/commit/417d2909db6f7e9468aa481a5da77bde37b87b9b))
+
+
+### Code Refactoring
+
+* **checkout:** CHECKOUT-0000 Remove -js suffix in package import path ([#965](https://github.com/bigcommerce/checkout-js/issues/965)) ([99d428b](https://github.com/bigcommerce/checkout-js/commit/99d428bbf2e3023c8d63bd1d856e4eb3443427de))
+* **checkout:** CHECKOUT-0000 Rename payment integration JS API ([#964](https://github.com/bigcommerce/checkout-js/issues/964)) ([e5e9abe](https://github.com/bigcommerce/checkout-js/commit/e5e9abe73736305a942eaa84a0e7aafefc83066c))
+* **checkout:** CHECKOUT-6781 Define default checkout button as sub-package ([3533949](https://github.com/bigcommerce/checkout-js/commit/35339499c1aa3e97f0f29f95ab02fa36d447ce0a))
+* **checkout:** CHECKOUT-6781 Move checkout button resolve ID into payment integration API package ([4b3164f](https://github.com/bigcommerce/checkout-js/commit/4b3164ff92204288eee5b8bed1ceba07f7b57d5e))
+* **checkout:** CHECKOUT-6899 Export PaymentMethodResolveId through payment integration API package ([4143d9e](https://github.com/bigcommerce/checkout-js/commit/4143d9e971803e215b3cdf7d5c8953618c528546))
+* **checkout:** CHECKOUT-6899 Move method-specific interfaces out of payment integration API package ([ad82528](https://github.com/bigcommerce/checkout-js/commit/ad82528dc21ff2d8983d41fb4364c62f4183d09c))
+* **checkout:** CHECKOUT-6899 Move mocks out of payment integration API package ([b62b2d2](https://github.com/bigcommerce/checkout-js/commit/b62b2d287e8af9a5d51f062930d115a48820583a))
+* **common:** CHECKOUT-6781 Use package name rather than relative path in generated files ([3f860bc](https://github.com/bigcommerce/checkout-js/commit/3f860bc964bd4907d6d3ecf8bd50716ae03f05c9))
+
 ### [1.245.2](https://github.com/bigcommerce/checkout-js/compare/v1.245.1...v1.245.2) (2022-08-15)
 
 
